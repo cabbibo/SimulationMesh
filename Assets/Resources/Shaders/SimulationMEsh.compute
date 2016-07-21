@@ -1,0 +1,153 @@
+﻿#pragma kernel CSMain
+ 
+#define threadX 10
+#define threadY 10
+#define threadZ 10
+
+#define strideX 10
+#define strideY 10
+#define strideZ 10
+
+#define gridX (threadX * strideX)
+#define gridY (threadY * strideY)
+#define gridZ (threadZ * strideZ)
+
+ 
+//Shaping Factors;
+#define _LengthOfConnectionSprings       0.0001
+#define _ConnectionSpringStrength        .3
+#define _MaxVel                          3.5
+#define _MaxForce                        3.2
+#define _ForceMultiplier                 0.0001
+
+#define _Dampening                       .99
+#define _HandRepelRadius                 10.0
+#define _HandRepelStrength               1.5
+
+#define _ReturnSpringStrength            10.1
+
+
+
+//low level
+float _Time;
+float _Delta;
+
+int _NumberHands;
+int _Set;
+
+struct Vert{
+
+  float3 pos;
+  float3 nor;
+  float3 vel;
+  float3 col;
+  float2 uv;
+
+  // should always be defined by righthand rule
+  float id;
+  float id1;
+  float id2;
+
+  float3 debug;
+  
+};
+
+
+struct Anchor{
+  float3 pos;
+  float3 nor;
+  float3 tang;
+  float3 col;
+  float2 uv;
+  float id;
+  float triID;
+  float used;
+};
+
+struct Hand{
+  float active;
+  float3 pos;
+  float3 vel;
+  float3 aVel;
+  float  triggerVal;
+  float  thumbVal;
+  float  sideVal;
+  float2 thumbPos;
+};
+
+
+float safeLength( float3 l ){
+
+
+}
+
+float3 springForce( float3 p1 , float3 p2 , float d ){
+
+  float3 dir = p1 - p2;
+  float l = length( dir );
+  dir = normalize( dir );
+
+  float dif = l - d;
+
+  return dif * dif * float(sign(dif)) * -dir;
+
+}
+
+
+RWStructuredBuffer<Vert> vertBuffer;
+RWStructuredBuffer<Anchor> anchorBuffer;
+RWStructuredBuffer<Hand> handBuffer;
+
+[numthreads(threadX,threadY,threadZ)]
+void CSMain (uint3 id : SV_DispatchThreadID) {
+  
+  int pID = id.x + id.y * gridX + id.z * gridX * gridY;
+
+  Vert vert = vertBuffer[pID];
+  Anchor anchor = anchorBuffer[pID];
+
+
+  if( _Set == 0 ){
+
+    float3 force = float3( 0 , 0 , 0 );
+   
+    force +=  _ReturnSpringStrength * springForce( vert.pos , anchor.pos  , 0.001 );
+    for( int i = 0; i < _NumberHands; i++ ){
+      float3 d = handBuffer[i].pos - vert.pos;
+      float l = length( d );
+      //if( handBuffer[i].active > 0 ){
+      force += (handBuffer[i].triggerVal-.2) * 2 *  (1/ (.1 + l * 10) ) * normalize( d );
+      //}
+
+    }
+
+    vert.nor  = anchor.nor;
+    vert.col  = anchor.col;
+//    vert.tang = anchor.tang;
+    vert.uv   = anchor.uv;
+    //vert.size = .01  / anchor.connectionStrength;
+
+    // Limit Force;
+    if( length( force ) > _MaxForce ){ force = normalize( force )* _MaxForce; }
+    vert.vel += force * _ForceMultiplier;
+    // Limit Velocity
+    if( length( vert.vel ) > _MaxVel ){ vert.vel = normalize( vert.vel )* _MaxVel; }
+
+
+    vert.vel *= _Dampening;
+    vert.pos += vert.vel;
+
+  }else{
+
+    vert.pos  = anchor.pos * .9;
+    vert.vel  = float3( 0,0,0);
+    vert.nor  = anchor.nor;
+    vert.col  = anchor.col;
+    //vert.tang = anchor.tang;
+    vert.uv   = anchor.uv;
+
+  }
+
+  vertBuffer[pID] = vert;
+
+}

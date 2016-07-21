@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FB8F981C-0EF9-F3A6-020D-4696B2C667BE}") = "SimulationMesh", "Assembly-CSharp.csproj", "{4071EF5F-AE87-B7AD-E4DA-1F77A424FEBF}"
+EndProject
+Project("{FB8F981C-0EF9-F3A6-020D-4696B2C667BE}") = "SimulationMesh", "Assembly-CSharp-Editor.csproj", "{81959198-AD1C-30F6-D90E-B7EB20DA7E68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4071EF5F-AE87-B7AD-E4DA-1F77A424FEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4071EF5F-AE87-B7AD-E4DA-1F77A424FEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4071EF5F-AE87-B7AD-E4DA-1F77A424FEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4071EF5F-AE87-B7AD-E4DA-1F77A424FEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81959198-AD1C-30F6-D90E-B7EB20DA7E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81959198-AD1C-30F6-D90E-B7EB20DA7E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81959198-AD1C-30F6-D90E-B7EB20DA7E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81959198-AD1C-30F6-D90E-B7EB20DA7E68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
