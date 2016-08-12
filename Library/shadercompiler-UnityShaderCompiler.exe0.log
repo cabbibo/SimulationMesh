@@ -1,144 +1,122 @@
-Base path: C:/Program Files/Unity 5.4.0b17/Editor/Data
+Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
-Cmd: compileSnippet
-  api=4 type=0 insize=986 outsize=1946 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _EMISSION pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=986 outsize=6302 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _EMISSION pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=996 outsize=1278 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=7547 outsize=1714 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=7547 outsize=5998 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4351 outsize=1342 kw=POINT SHADOWS_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4351 outsize=3210 kw=POINT SHADOWS_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=6657 outsize=1714 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=6657 outsize=2090 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=3655 outsize=1210 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=3655 outsize=642 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
 Cmd: compileCompute
-  api=4 insize=401 outsize=457 ok=1
-Cmd: preprocess
-  insize=2445 outsize=423 ok=1
-Cmd: compileSnippet
-  error: 2 plat 4 at (88): undeclared identifier 'fID'\nCompiling Vertex program
-Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
-  api=4 type=0 insize=2323 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5847 outsize=6237 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(124): invalid subscript 'nor'
-  api=4 insize=3035 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5845 outsize=6237 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(124): invalid subscript 'nor'
-  api=4 insize=3035 outsize=33 ok=0
-Cmd: preprocess
-  insize=2444 outsize=423 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2322 outsize=610 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2322 outsize=342 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5925 outsize=6341 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(125): invalid subscript 'col'
-  api=4 insize=3033 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5917 outsize=6341 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(125): invalid subscript 'col'
-  api=4 insize=3033 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5954 outsize=6345 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(126): invalid subscript 'tang'
-  api=4 insize=3030 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5939 outsize=6289 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(126): invalid subscript 'tang'
-  api=4 insize=3030 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5939 outsize=6289 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(155): undeclared identifier 'Result'
-  api=4 insize=3034 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5972 outsize=6289 ok=1
 Cmd: compileCompute
-  error: 2 plat 4 at SimulationMEsh.compute(155): undeclared identifier 'Result'
-  api=4 insize=3034 outsize=33 ok=0
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5999 outsize=6365 ok=1
 Cmd: compileCompute
-  api=4 insize=2919 outsize=2645 ok=1
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=5999 outsize=6365 ok=1
 Cmd: compileCompute
-  api=4 insize=2913 outsize=2673 ok=1
-Cmd: preprocess
-  insize=999 outsize=1281 ok=1
-Cmd: preprocess
-  insize=2397 outsize=426 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2272 outsize=630 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2272 outsize=342 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=2577 outsize=423 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2455 outsize=630 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2455 outsize=342 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6001 outsize=6365 ok=1
 Cmd: compileCompute
-  api=4 insize=2919 outsize=2645 ok=1
-Cmd: preprocess
-  insize=2719 outsize=423 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2597 outsize=1078 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2597 outsize=342 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=2862 outsize=417 ok=1
-Cmd: compileSnippet
-  error: 2 plat 4 at (125): syntax error: unexpected token '{'\nCompiling Vertex program
-Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
-  error: 2 plat 4 at (129): undeclared identifier 'col'\nCompiling Vertex program
-Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
-  api=4 type=0 insize=2746 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
-Cmd: preprocess
-  insize=2862 outsize=417 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2746 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2746 outsize=1174 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=2907 outsize=417 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2791 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2791 outsize=362 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=2950 outsize=417 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2834 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2834 outsize=430 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  error: 1 plat 4 at SimulationMEsh.compute(142): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(149): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(150): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(151): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6001 outsize=6365 ok=1
 Cmd: compileCompute
-  api=4 insize=2921 outsize=2645 ok=1
+  error: 2 plat 4 at SimulationMEsh.compute(132): unrecognized identifier 'vec2'
+  api=4 insize=6129 outsize=29 ok=0
 Cmd: compileCompute
-  api=4 insize=2920 outsize=2645 ok=1
-Cmd: preprocess
-  insize=3101 outsize=417 ok=1
-Cmd: compileSnippet
-  error: 2 plat 4 at (129): undeclared identifier 'i'\nCompiling Vertex program
-Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
-  api=4 type=0 insize=2985 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+  error: 2 plat 4 at SimulationMEsh.compute(132): unrecognized identifier 'vec2'
+  api=4 insize=6129 outsize=29 ok=0
 Cmd: compileCompute
-  api=4 insize=2920 outsize=2645 ok=1
+  error: 1 plat 4 at SimulationMEsh.compute(146): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(153): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(154): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(155): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6132 outsize=6521 ok=1
+Cmd: compileCompute
+  error: 1 plat 4 at SimulationMEsh.compute(146): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(153): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(154): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(155): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6318 outsize=7081 ok=1
+Cmd: compileCompute
+  error: 1 plat 4 at SimulationMEsh.compute(146): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(153): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(154): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(155): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6350 outsize=7085 ok=1
+Cmd: compileCompute
+  error: 1 plat 4 at SimulationMEsh.compute(146): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(153): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(154): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(155): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6373 outsize=7093 ok=1
+Cmd: compileCompute
+  error: 1 plat 4 at SimulationMEsh.compute(146): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(153): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(154): 'sdCapsule': implicit truncation of vector type
+  error: 1 plat 4 at SimulationMEsh.compute(155): 'sdCapsule': implicit truncation of vector type
+  api=4 insize=6373 outsize=7093 ok=1
 Cmd: preprocess
-  insize=3101 outsize=417 ok=1
+  insize=3423 outsize=440 ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=2985 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  api=4 type=0 insize=3284 outsize=1321 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=2985 outsize=1594 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  api=4 type=1 insize=3284 outsize=853 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
 Cmd: preprocess
-  insize=3133 outsize=417 ok=1
+  insize=3450 outsize=440 ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=3017 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  api=4 type=0 insize=3311 outsize=1321 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=3017 outsize=1750 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: preprocess
-  insize=3147 outsize=417 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=3031 outsize=1222 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=3031 outsize=1522 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+  api=4 type=1 insize=3311 outsize=645 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1

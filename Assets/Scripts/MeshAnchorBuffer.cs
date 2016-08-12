@@ -8,7 +8,7 @@ public class MeshAnchorBuffer : MonoBehaviour {
   private Mesh[] meshes;
 
 
-  public int SIZE = 10;
+  public int SIZE = 8;
 
   int threadX;
   int threadY;

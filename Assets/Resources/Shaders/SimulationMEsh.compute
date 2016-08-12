@@ -1,12 +1,12 @@
 ﻿#pragma kernel CSMain
  
-#define threadX 10
-#define threadY 10
-#define threadZ 10
+#define threadX 8
+#define threadY 8
+#define threadZ 8
 
-#define strideX 10
-#define strideY 10
-#define strideZ 10
+#define strideX 8
+#define strideY 8
+#define strideZ 8
 
 #define gridX (threadX * strideX)
 #define gridY (threadY * strideY)
@@ -18,19 +18,29 @@
 #define _ConnectionSpringStrength        .3
 #define _MaxVel                          3.5
 #define _MaxForce                        3.2
-#define _ForceMultiplier                 0.0001
+#define _ForceMultiplier                 0.01
 
-#define _Dampening                       .99
+#define _Dampening                       .9
 #define _HandRepelRadius                 10.0
-#define _HandRepelStrength               1.5
+#define _HandRepelStrength               10.5
 
-#define _ReturnSpringStrength            10.1
+#define _ReturnSpringStrength            .1
 
 
 
 //low level
 float _Time;
 float _Delta;
+float _StartTime;
+
+float _StartDisform;      //30 
+float _StartVoid;         // 48
+float _BlackCurtainStart;  // 85
+float _SkullStart;         // 91
+float _Peak; // 138
+float _Shatter; //140
+float _Back; // 166
+
 
 int _NumberHands;
 int _Set;
@@ -49,6 +59,7 @@ struct Vert{
   float id2;
 
   float3 debug;
+  // x = state
   
 };
 
@@ -75,6 +86,10 @@ struct Hand{
   float2 thumbPos;
 };
 
+struct Head{
+  float4x4 transform;
+};
+
 
 float safeLength( float3 l ){
 
@@ -94,9 +109,71 @@ float3 springForce( float3 p1 , float3 p2 , float d ){
 }
 
 
+
 RWStructuredBuffer<Vert> vertBuffer;
 RWStructuredBuffer<Anchor> anchorBuffer;
+RWStructuredBuffer<Anchor> anchorBuffer2;
 RWStructuredBuffer<Hand> handBuffer;
+RWStructuredBuffer<Head> headBuffer;
+
+float sdCylinder( float3 p, float3 c )
+{
+  return length(p.xz-c.xy)-c.z;
+}
+
+float sdCapsule( float3 p, float3 a, float3 b, float r )
+{
+    float3 pa = p - a, ba = b - a;
+    float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
+    return length( pa - ba*h ) - r;
+}
+
+
+float rand(float2 co){
+  return frac(sin(dot(co.xy ,float2(12.9898,78.233))) * 43758.5453);
+}
+
+
+float3 voidForce(float3 p ){
+
+  // VoidCenter
+  float3 p1 = float3( 0 , 1.5 ,-1000 );
+  float3 p2 = float3( 0 , 1.5 , 1000 ); 
+
+  // Void radius;
+  float3 voidRadius = 3;
+
+  float capsule = sdCapsule( p , p1 , p2 , voidRadius );
+
+  float3 dir =normalize(p1-p2);
+
+
+  float3 eps = float3( 0.001, 0.0, 0.0 );
+  float3 n = float3(
+            sdCapsule(p+eps.xyy,p1,p2,voidRadius).x - sdCapsule(p-eps.xyy,p1,p2,voidRadius).x,
+            sdCapsule(p+eps.yxy,p1,p2,voidRadius).x - sdCapsule(p-eps.yxy,p1,p2,voidRadius).x,
+            sdCapsule(p+eps.yyx,p1,p2,voidRadius).x - sdCapsule(p-eps.yyx,p1,p2,voidRadius).x );
+         n = normalize(n);
+
+  float3 t = normalize(cross( n , dir ));
+
+
+  float3 outForce = max( -capsule , 0 ) * n;
+  float3 tanForce = .1 * t;
+  float3 dirForce = .1 * dir;
+
+  float3 force = outForce + tanForce + dirForce;
+
+
+  return force;
+
+
+
+
+}
+
+
+// If 
 
 [numthreads(threadX,threadY,threadZ)]
 void CSMain (uint3 id : SV_DispatchThreadID) {
@@ -104,22 +181,99 @@ void CSMain (uint3 id : SV_DispatchThreadID) {
   int pID = id.x + id.y * gridX + id.z * gridX * gridY;
 
   Vert vert = vertBuffer[pID];
+
   Anchor anchor = anchorBuffer[pID];
+  Anchor anchor2 = anchorBuffer2[pID];
+
+  float3 infoV1 = vertBuffer[ vert.id1 ].debug;
+  float3 infoV2 = vertBuffer[ vert.id2 ].debug;
+
+  float3 pos1 = vertBuffer[ vert.id1 ].pos;
+  float3 pos2 = vertBuffer[ vert.id2 ].pos;
 
 
+
+  float3 dir = mul(headBuffer[0].transform , float4( 0,0,1,0)).xyz;
+  float3 camPos = (headBuffer[0].transform[3]).xyz;
+
+  float3 p2 = camPos + dir.xyz * 10;
+
+  float radius = .2;
+  float addSpeed = .01;
+  float capsule = sdCapsule( vert.pos , camPos , p2 , .2 );
+
+  float addVal = 0;
+  if( capsule < 0 ){ 
+    addVal = 1;
+  }else{
+    addVal = (radius - capsule) / radius;
+  }
+
+  addVal = max( 0 , addVal);
+
+  vert.debug += addSpeed *  addVal * float3( 1 , 0 , 0 );
+
+
+  float state = max( infoV1.x , infoV2.x );
+  state = max( state , vert.debug.x );
+
+  state += .001 * (( rand( vert.uv ) + 5 ) / 6);
+
+  vert.debug.x = state;
+
+  float3 force = float3( 0 , 0 , 0 );
   if( _Set == 0 ){
 
-    float3 force = float3( 0 , 0 , 0 );
-   
-    force +=  _ReturnSpringStrength * springForce( vert.pos , anchor.pos  , 0.001 );
-    for( int i = 0; i < _NumberHands; i++ ){
-      float3 d = handBuffer[i].pos - vert.pos;
-      float l = length( d );
-      //if( handBuffer[i].active > 0 ){
-      force += (handBuffer[i].triggerVal-.2) * 2 *  (1/ (.1 + l * 10) ) * normalize( d );
-      //}
+    //force +=  _ReturnSpringStrength * springForce( vert.pos , targetPos  , 0.001 );
+    
+    
+
+    if( state < .5 ){
+
+      float3 targetPos = anchor.pos;
+      if( state > .5 ){ targetPos = anchor2.pos; }
+
+      for( int i = 0; i < _NumberHands; i++ ){
+        float3 d = handBuffer[i].pos - vert.pos;
+        float l = length( d );
+        //if( handBuffer[i].active > 0 ){
+        force += (handBuffer[i].triggerVal-.2) * 2 *  (1/ (.1 + l * 10) ) * normalize( d );
+
+      }
+
+    }else if( state >= .5  ){
+     
+
+      
+
+
+      if( state > 1.2 && anchor2.used == 1 ){
+
+        float3 targetPos = anchor2.pos; 
+
+        force += 10 * springForce( vert.pos , targetPos , 0 );
+
+      }else{
+        
+        force += 10 * voidForce( vert.pos );
+        force += springForce( vert.pos , pos1 , .2 );
+        force += springForce( vert.pos , pos2 , .2 );
+
+        if( vert.pos.z < -20 ){
+          vert.pos = float3( vert.pos.x , vert.pos.y , 20);
+          vert.vel = float3( 0 ,0,0);
+          vert.debug.z = 1;
+        }
+      }
+
+
+      
+
 
     }
+
+    
+    //force += connect
 
     vert.nor  = anchor.nor;
     vert.col  = anchor.col;
@@ -136,6 +290,7 @@ void CSMain (uint3 id : SV_DispatchThreadID) {
 
     vert.vel *= _Dampening;
     vert.pos += vert.vel;
+
 
   }else{
 

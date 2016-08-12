@@ -5,8 +5,10 @@ public class SimulationMesh : MonoBehaviour {
 
 
   public GameObject VertBuffer;
-  public GameObject[] AnchorBuffers;
+  public GameObject AnchorBuffer;
+  public GameObject AnchorBuffer2;
   public GameObject HandBuffer;
+  public GameObject HeadBuffer;
 
   public ComputeShader computeShader;
   public Material material;
@@ -27,16 +29,16 @@ public class SimulationMesh : MonoBehaviour {
 
     size = VertBuffer.GetComponent<MeshVertBuffer>().SIZE;
 
-    for( int i = 0; i < AnchorBuffers.Length; i++ ){
-      AnchorBuffers[i].GetComponent<MeshAnchorBuffer>().PopulateBuffer();
-    }
+    AnchorBuffer.GetComponent<MeshAnchorBuffer>().PopulateBuffer();
+    AnchorBuffer2.GetComponent<MeshAnchorBuffer>().PopulateBuffer();
+
 
     //print( AnchorBuffers[0].GetComponent<MeshAnchorBuffer>()._anchorBuffer );
 
     _kernel = computeShader.FindKernel("CSMain");
 
-    EventManager.OnTouchpadDown += OnTouchpadDown;
-    EventManager.OnTouchpadUp += OnTouchpadUp;
+    //EventManager.OnTouchpadDown += OnTouchpadDown;
+    //EventManager.OnTouchpadUp += OnTouchpadUp;
 
     Camera.onPostRender += Render;
     Set();
@@ -61,9 +63,11 @@ public class SimulationMesh : MonoBehaviour {
     computeShader.SetInt( "_NumberHands" ,HandBuffer.GetComponent<HandBuffer>().numberHands  );
 
     computeShader.SetBuffer( _kernel , "vertBuffer"     , VertBuffer.GetComponent<MeshVertBuffer>()._vertBuffer );
-    computeShader.SetBuffer( _kernel , "anchorBuffer"   , AnchorBuffers[activeMesh].GetComponent<MeshAnchorBuffer>()._anchorBuffer );
+    computeShader.SetBuffer( _kernel , "anchorBuffer"   , AnchorBuffer.GetComponent<MeshAnchorBuffer>()._anchorBuffer );
+    computeShader.SetBuffer( _kernel , "anchorBuffer2"   , AnchorBuffer2.GetComponent<MeshAnchorBuffer>()._anchorBuffer );
 
     computeShader.SetBuffer( _kernel , "handBuffer"     , HandBuffer.GetComponent<HandBuffer>()._handBuffer );
+    computeShader.SetBuffer( _kernel , "headBuffer"     , HeadBuffer.GetComponent<HeadBuffer>()._headBuffer );
 
     computeShader.Dispatch( _kernel, size , size , size );
   }
@@ -76,9 +80,11 @@ public class SimulationMesh : MonoBehaviour {
     computeShader.SetInt( "_NumberHands" ,HandBuffer.GetComponent<HandBuffer>().numberHands  );
 
     computeShader.SetBuffer( _kernel , "vertBuffer"     , VertBuffer.GetComponent<MeshVertBuffer>()._vertBuffer );
-    computeShader.SetBuffer( _kernel , "anchorBuffer"   , AnchorBuffers[activeMesh].GetComponent<MeshAnchorBuffer>()._anchorBuffer );
+    computeShader.SetBuffer( _kernel , "anchorBuffer"   , AnchorBuffer.GetComponent<MeshAnchorBuffer>()._anchorBuffer );
+    computeShader.SetBuffer( _kernel , "anchorBuffer2"  , AnchorBuffer2.GetComponent<MeshAnchorBuffer>()._anchorBuffer );
 
     computeShader.SetBuffer( _kernel , "handBuffer"     , HandBuffer.GetComponent<HandBuffer>()._handBuffer );
+    computeShader.SetBuffer( _kernel , "headBuffer"     , HeadBuffer.GetComponent<HeadBuffer>()._headBuffer );
 
     computeShader.Dispatch( _kernel, size , size , size );
 
@@ -91,9 +97,9 @@ public class SimulationMesh : MonoBehaviour {
 
   void OnTouchpadUp( GameObject g ){
 
-     activeMesh ++;
-    if( activeMesh == AnchorBuffers.Length){ activeMesh = 0;}
-    print( "ACTIVE");
+    activeMesh ++;
+    // if( activeMesh == AnchorBuffers.Length){ activeMesh = 0;}
+    // print( "ACTIVE");
 
   }
 

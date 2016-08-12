@@ -69,6 +69,7 @@ struct Anchor{
           //float  lamb 		: TEXCOORD4;
           float3 eye      : TEXCOORD5;
           float3 worldPos : TEXCOORD6;
+          float3 debug    : TEXCOORD7;
 
       };
 
@@ -114,6 +115,7 @@ struct Anchor{
 	
 				o.nor = normalize( cross( normalize( v.pos-v1.pos) , normalize( v.pos-v2.pos)));
 				o.uv = v.uv;
+        o.debug = v.debug;
 
         return o;
 
@@ -122,15 +124,18 @@ struct Anchor{
       //Pixel function returns a solid color for each point.
       float4 frag (varyings v) : COLOR {
 
-      	float3 fNorm = uvNormalMap( _NormalMap , v.worldPos , v.uv ,v.nor , 10 ,14);
+      	float3 fNorm = v.nor; //uvNormalMap( _NormalMap , v.worldPos , v.uv ,v.nor , 10 ,14);
 
         float3 col = fNorm * .5 + .5;//i.debug;
 
         float3 fRefl = reflect( -normalize(v.eye) , fNorm );
        	float3 cubeCol = texCUBE(_CubeMap,fRefl ).rgb;
-        col = float3( v.uv.x , 0 , v.uv.y );
-        col = tex2D( _TexMap , v.uv ).xyz * (fRefl * .5 + .5) * cubeCol * 2;
-        col = normalize( (fRefl * .5 + .5) );
+        //col = float3( v.uv.x , 0 , v.uv.y );
+        //col = tex2D( _TexMap , v.uv ).xyz * (fRefl * .5 + .5) * cubeCol * 2;
+        //col = normalize( (fRefl * .5 + .5) );
+
+       // col = v.debug + float3( 0 , .1 , 0 );
+       col = cubeCol;
 
         return float4( col , 1. );
 

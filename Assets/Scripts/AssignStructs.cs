@@ -94,6 +94,7 @@ public class AssignStructs : MonoBehaviour {
   public static int VertC4StructSize = 22;
   public static int VertClothStructSize = 50;
   public static int HandStructSize = 1 + 3 + 3 + 3 + 1 + 1 + 1 + 2;
+  public static int HeadStructSize = 16;
 
   public static void test(){
     print("Assign Structs working");
@@ -359,6 +360,18 @@ public class AssignStructs : MonoBehaviour {
 
   }
 
+  public static void AssignMat4Buffer( Matrix4x4 m , float[] mValues , ComputeBuffer _mBuffer ){
+		
+		for( int i = 0; i < 16; i++ ){
+      int x = i % 4;
+      int y = (int) Mathf.Floor(i / 4);
+      mValues[i] = m[x,y];
+    }
+
+    _mBuffer.SetData(mValues);
+
+  }
+
   public static void AssignDisformerBuffer( GameObject[] Disformers , float[] disformValues , ComputeBuffer _disformBuffer){
 
     for( int i = 0; i < Disformers.Length; i++ ){
@@ -376,7 +389,7 @@ public class AssignStructs : MonoBehaviour {
     int index = 0;
     for( int i =0; i < Hands.Length; i++ ){
       if( Hands[i] != null ){
-        AssignHandStruct( handValues , index , out index , Hands[i].GetComponent<controllerInfo>().hand );
+        AssignNullHandStruct( handValues , index , out index );//AssignHandStruct( handValues , index , out index , Hands[i].GetComponent<controllerInfo>().hand );
       }else{
         AssignNullHandStruct( handValues , index , out index );
       }
